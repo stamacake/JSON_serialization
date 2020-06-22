@@ -1,4 +1,4 @@
-package com.company.model;
+package com.vtbschool.model;
 
 public class Task {
     private long id;

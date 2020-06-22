@@ -1,12 +1,15 @@
-package com.company.model;
+package com.vtbschool.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Arrays;
 import java.util.List;
 
 @JsonAutoDetect
+@XmlRootElement
 public class Intern {
+
 
     private String firstName;
     private String lastName;
@@ -14,7 +17,6 @@ public class Intern {
     private Gender gender;
     private String compamy;
     private String[] skills;
-
     private List<Task> tasks;
 
     public String getFirstName() {
