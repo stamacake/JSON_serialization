@@ -5,6 +5,9 @@ import com.vtbschool.model.Gender;
 import com.vtbschool.model.Intern;
 import com.vtbschool.model.Task;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -16,16 +19,26 @@ import java.util.List;
 
 public class Main {
 
+
+
     static public String toJSON(Intern convertJava) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
         objectMapper.writeValue(new File("intern.json"), convertJava);
+
+        final Logger logger = LoggerFactory.getLogger(Main.class);
+        logger.debug("converted to JSON");
+
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(convertJava);
     }
 
     static public Intern fromJSON(String jsonFilePath) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Intern user = mapper.readValue(new File(jsonFilePath), Intern.class);
+
+        final Logger logger = LoggerFactory.getLogger(Main.class);
+        logger.debug("converted from JSON");
+
         return user;
     }
 
@@ -40,6 +53,10 @@ public class Main {
         }
         StringWriter res = new StringWriter();
         jaxbMarshaller.marshal(convertJava, res);
+
+        final Logger logger = LoggerFactory.getLogger(Main.class);
+        logger.debug("converted to XML");
+
         return res.toString();
     }
 
@@ -50,6 +67,9 @@ public class Main {
         try (InputStream inputStream = new FileInputStream("intern.xml")) {
             intern = (Intern) unmarshaller.unmarshal(inputStream);
         }
+
+        final Logger logger = LoggerFactory.getLogger(Main.class);
+        logger.debug("converted from XML");
 
         return intern;
 
