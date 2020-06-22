@@ -1,4 +1,4 @@
-package com.company.model;
+package com.vtbschool.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
