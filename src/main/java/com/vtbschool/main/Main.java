@@ -18,7 +18,7 @@ import java.util.List;
 
 
 public class Main {
-
+    final static Logger logger = LoggerFactory.getLogger(Main.class);
 
 
     static public String toJSON(Intern convertJava) throws IOException {
@@ -26,7 +26,7 @@ public class Main {
 
         objectMapper.writeValue(new File("intern.json"), convertJava);
 
-        final Logger logger = LoggerFactory.getLogger(Main.class);
+
         logger.debug("converted to JSON");
 
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(convertJava);
@@ -36,7 +36,7 @@ public class Main {
         ObjectMapper mapper = new ObjectMapper();
         Intern user = mapper.readValue(new File(jsonFilePath), Intern.class);
 
-        final Logger logger = LoggerFactory.getLogger(Main.class);
+
         logger.debug("converted from JSON");
 
         return user;
@@ -54,7 +54,6 @@ public class Main {
         StringWriter res = new StringWriter();
         jaxbMarshaller.marshal(convertJava, res);
 
-        final Logger logger = LoggerFactory.getLogger(Main.class);
         logger.debug("converted to XML");
 
         return res.toString();
@@ -68,7 +67,6 @@ public class Main {
             intern = (Intern) unmarshaller.unmarshal(inputStream);
         }
 
-        final Logger logger = LoggerFactory.getLogger(Main.class);
         logger.debug("converted from XML");
 
         return intern;
