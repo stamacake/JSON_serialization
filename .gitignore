@@ -1,5 +1,5 @@
 *.iml
-/out/
-/.idea/
-/lib/
-/target/
+out/
+.idea/
+lib/
+target/
