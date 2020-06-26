@@ -4,6 +4,7 @@ import com.vtbschool.InternSerializer;
 import com.vtbschool.exceptions.ReadFileException;
 import com.vtbschool.exceptions.SerializationLibException;
 import com.vtbschool.exceptions.WriteFileException;
+import com.vtbschool.model.Group;
 import com.vtbschool.model.Intern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +20,12 @@ public class XMLSerializer implements InternSerializer {
 
 
     @Override
-    public void serialize(String filePath, Intern object) {
+    public void serialize(String filePath, Group object) {
         serialize(new File(filePath), object);
     }
 
     @Override
-    public void serialize(File resultFile, Intern object) {
+    public void serialize(File resultFile, Group object) {
         try {
             serialize(new FileOutputStream(resultFile), object);
         } catch (FileNotFoundException e) {
@@ -35,7 +36,7 @@ public class XMLSerializer implements InternSerializer {
     }
 
     @Override
-    public void serialize(OutputStream out, Intern object) {
+    public void serialize(OutputStream out, Group object) {
         try {
 
 
@@ -57,12 +58,12 @@ public class XMLSerializer implements InternSerializer {
     }
 
     @Override
-    public Intern deserialize(String filepath) {
+    public Group deserialize(String filepath) {
         return deserialize(new File(filepath));
     }
 
     @Override
-    public Intern deserialize(File file) {
+    public Group deserialize(File file) {
         try {
             return deserialize(new FileInputStream(file));
         } catch (FileNotFoundException e) {
@@ -72,14 +73,14 @@ public class XMLSerializer implements InternSerializer {
     }
 
     @Override
-    public Intern deserialize(InputStream is) {
-        Intern intern;
+    public Group deserialize(InputStream is) {
+        Group group;
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Intern.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             try (InputStream inputStream = is) {
-                intern = (Intern) unmarshaller.unmarshal(inputStream);
+                group = (Group) unmarshaller.unmarshal(inputStream);
             }
             logger.debug("converted from XML");
         } catch (IOException e) {
@@ -89,6 +90,6 @@ public class XMLSerializer implements InternSerializer {
             logger.debug(e.toString());
             throw new SerializationLibException(e.getMessage());
         }
-        return intern;
+        return group;
     }
 }

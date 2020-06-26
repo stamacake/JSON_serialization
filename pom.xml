@@ -102,13 +102,33 @@
                             <goal>xjc</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>schemagen</id>
+                        <goals>
+                            <goal>schemagen</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <configuration>
+<!--                    XSD schema to Java classes configuration-->
                     <outputDirectory>target/generated-sources/jaxb</outputDirectory>
                     <packageName>com.vtbschool.fromxsd</packageName>
                     <schemaDirectory>src/main/resources</schemaDirectory>
                     <schemaFiles>*.xsd</schemaFiles>
+<!--                    Java Class to XSD-schema configuration-->
+                    <transformSchemas>
+                        <transformSchema>
+                            <uri>https://www.example.org/Group</uri>
+                            <toPrefix>grps</toPrefix>
+                            <toFile>group.xsd</toFile>
+                        </transformSchema>
+                    </transformSchemas>
+                    <includes>
+                        <include>com/vtbschool/model/*</include>
+                    </includes>
+                    <verbose>true</verbose>
                 </configuration>
+
             </plugin>
 
         </plugins>

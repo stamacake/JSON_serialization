@@ -1,4 +1,4 @@
 package com.vtbschool.exceptions;
 
-public class NoSuchSerializerException extends RuntimeException{
+public class NoSuchSerializerException extends RuntimeException {
 }

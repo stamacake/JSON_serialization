@@ -1,11 +1,17 @@
 package com.vtbschool.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlList;
 import java.util.List;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Task {
     private long id;
     private String name;
     private String description;
+    @XmlElement(name="tag")
     private List<TaskTag> tags;
 
     public Task() {

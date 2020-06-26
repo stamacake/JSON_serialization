@@ -1,9 +1,13 @@
 package com.vtbschool.model;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Group {
     private long id;
+    @XmlElement(name = "intern")
     private List<Intern> interns;
 
     public long getId() {
