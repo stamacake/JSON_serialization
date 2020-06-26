@@ -2,12 +2,11 @@ package com.vtbschool.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Arrays;
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
 @JsonAutoDetect
-@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Intern {
     private long id;
     private String firstName;
@@ -15,7 +14,9 @@ public class Intern {
     private int age;
     private Gender gender;
     private String compamy;
+    @XmlElement(name = "skill")
     private List<String> skills;
+    @XmlElement(name = "task")
     private List<Task> tasks;
 
     public long getId() {

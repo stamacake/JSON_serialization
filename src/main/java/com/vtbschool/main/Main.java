@@ -3,7 +3,7 @@ package com.vtbschool.main;
 import com.vtbschool.InternSerializer;
 import com.vtbschool.SerializationFactory;
 import com.vtbschool.Serializers;
-import com.vtbschool.model.Intern;
+import com.vtbschool.model.Group;
 
 public class Main {
 
@@ -11,12 +11,13 @@ public class Main {
         SerializationFactory factory = new SerializationFactory();
         InternSerializer serializer = factory.getSerializer(Serializers.JSON);
 
-        Intern intern = new Intern();
-        intern.setFirstName("dsdss");
+        Group group = new Group();
+        group.setId(112);
 
-        serializer.serialize("intern1.json", intern);
 
-        Intern intern2 = serializer.deserialize("intern1.json");
+        serializer.serialize("group.json", group);
+
+        Group gr = serializer.deserialize("group.json");
     }
 
 }

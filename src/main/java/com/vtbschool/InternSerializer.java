@@ -1,23 +1,23 @@
 package com.vtbschool;
 
-import com.vtbschool.model.Intern;
+import com.vtbschool.model.Group;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 public interface InternSerializer {
-    void serialize(String filePath, Intern object);
+    void serialize(String filePath, Group object);
 
-    void serialize(File resultFile, Intern object);
+    void serialize(File resultFile, Group object);
 
-    void serialize(OutputStream os, Intern object);
+    void serialize(OutputStream os, Group object);
 
-    Intern deserialize(String filepath);
+    Group deserialize(String filepath);
 
-    Intern deserialize(File file);
+    Group deserialize(File file);
 
-    Intern deserialize(InputStream is);
+    Group deserialize(InputStream is);
 
 
 }
