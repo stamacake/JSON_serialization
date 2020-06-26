@@ -9,7 +9,7 @@ public class SerializationFactory {
     public SerializationFactory() {
     }
 
-    public InternSerializer getSerilizer(Serializers serializer) {
+    public InternSerializer getSerializer(Serializers serializer) {
         switch (serializer) {
             case XML:
                 return new XMLSerializer();
