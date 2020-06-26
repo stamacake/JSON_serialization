@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<group>
+    <id>333</id>
+    <intern>
+        <id>2201</id>
+        <firstName>John</firstName>
+        <lastName>Statham</lastName>
+        <age>20</age>
+        <gender>MALE</gender>
+        <compamy>VTB</compamy>
+        <skill>java</skill>
+        <skill>sql</skill>
+        <skill>maven</skill>
+        <task>
+            <id>11</id>
+            <name>Generate XSD</name>
+            <description>generate xsd schema using specific software</description>
+        </task>
+    </intern>
+    <intern>
+        <id>2202</id>
+        <firstName>Katy</firstName>
+        <lastName>Perry</lastName>
+        <age>20</age>
+        <gender>FEMALE</gender>
+        <compamy>VTB</compamy>
+        <skill>go</skill>
+        <skill>sql</skill>
+        <skill>devops</skill>
+        <task>
+            <id>15</id>
+            <name>Generate JSON</name>
+            <description>generate json schema using specific software</description>
+        </task>
+    </intern>
+</group>
