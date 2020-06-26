@@ -9,15 +9,22 @@ import java.util.List;
 @JsonAutoDetect
 @XmlRootElement
 public class Intern {
-
-
+    private long id;
     private String firstName;
     private String lastName;
     private int age;
     private Gender gender;
     private String compamy;
-    private String[] skills;
+    private List<String> skills;
     private List<Task> tasks;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -60,11 +67,11 @@ public class Intern {
         this.compamy = compamy;
     }
 
-    public String[] getSkills() {
+    public List<String> getSkills() {
         return skills;
     }
 
-    public void setSkills(String[] skills) {
+    public void setSkills(List<String> skills) {
         this.skills = skills;
     }
 
@@ -80,12 +87,13 @@ public class Intern {
     @Override
     public String toString() {
         return "Intern{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", gender=" + gender +
                 ", compamy='" + compamy + '\'' +
-                ", skills=" + Arrays.toString(skills) +
+                ", skills=" + skills +
                 ", tasks=" + tasks +
                 '}';
     }
