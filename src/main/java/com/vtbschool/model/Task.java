@@ -1,9 +1,12 @@
 package com.vtbschool.model;
 
+import java.util.List;
+
 public class Task {
     private long id;
     private String name;
     private String description;
+    private List<TaskTag> tags;
 
     public Task() {
     }
@@ -30,6 +33,14 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<TaskTag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TaskTag> tags) {
+        this.tags = tags;
     }
 
     @Override
