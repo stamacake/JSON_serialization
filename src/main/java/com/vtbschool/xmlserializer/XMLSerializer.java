@@ -46,8 +46,6 @@ public class XMLSerializer implements InternSerializer {
             try (OutputStream os = out) {
                 jaxbMarshaller.marshal(object, os);
             }
-            StringWriter res = new StringWriter();
-            jaxbMarshaller.marshal(object, res);
         } catch (IOException e) {
             logger.debug(e.toString());
             throw new ReadFileException(e.getMessage());
@@ -83,7 +81,6 @@ public class XMLSerializer implements InternSerializer {
             try (InputStream inputStream = is) {
                 intern = (Intern) unmarshaller.unmarshal(inputStream);
             }
-
             logger.debug("converted from XML");
         } catch (IOException e) {
             logger.debug(e.toString());
