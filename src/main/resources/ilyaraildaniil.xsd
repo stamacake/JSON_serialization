@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="teams" type="teams" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DONE"/>
+      <xs:enumeration value="IN_PROCESS"/>
+      <xs:enumeration value="IN_REVIEW"/>
+      <xs:enumeration value="OPEN"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="label">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="task">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="status" type="status"/>
+      <xs:element name="labels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="label" type="label" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="student">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+      <xs:element name="secondName" type="xs:string" minOccurs="0"/>
+      <xs:element name="phone" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="tasks">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="task" type="task" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="team">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="students">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="student" type="student" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="tasks">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="task" type="task" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="teams">
+    <xs:sequence>
+      <xs:element name="team" type="team" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+
