@@ -22,11 +22,11 @@ public class SerializationFactory<T> {
         throw new NoSuchSerializerException();
     }
 
-    public AnySerializer getXMLSerializer() {
+    public AnySerializer<T> getXMLSerializer() {
         return new XMLSerializer(type);
     }
 
-    public AnySerializer getJSONSerializer() {
+    public AnySerializer<T> getJSONSerializer() {
         return new JSONSerializer(type);
     }
 }

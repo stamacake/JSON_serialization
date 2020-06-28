@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<t>
+<group>
     <id>333</id>
     <intern>
         <id>2201</id>
@@ -33,4 +33,4 @@
             <description>generate json schema using specific software</description>
         </task>
     </intern>
-</t>
+</group>

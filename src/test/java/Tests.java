@@ -1,4 +1,7 @@
 import com.vtbschool.SerializationFactory;
+import com.vtbschool.fromxsd.rubenaidar.Root;
+import com.vtbschool.mappers.Mapper;
+import com.vtbschool.mappers.RubenAidarMapper;
 import com.vtbschool.model.Gender;
 import com.vtbschool.model.Group;
 import com.vtbschool.model.Intern;
@@ -57,6 +60,17 @@ class Tests {
 
         AnySerializer serializer = new SerializationFactory(Group.class).getXMLSerializer();
         serializer.serialize("group.xml", g);
+    }
+
+    @Test
+    void anotherTeamXml() {
+        AnySerializer<Root> serializer = new SerializationFactory<Root>(Root.class).getXMLSerializer();
+        Root root = serializer.deserialize("C:\\Users\\User\\Documents\\Projects\\JSON_serialization\\src\\main\\resources\\team.xml");
+        AnySerializer<Group> groupSerializer = new SerializationFactory<Group>(Group.class).getXMLSerializer();
+        Mapper rubenAidarMapper = new RubenAidarMapper();
+        Group group = rubenAidarMapper.mapToOur(root);
+        groupSerializer.serialize("anotherour.xml", group);
+
     }
 
 }

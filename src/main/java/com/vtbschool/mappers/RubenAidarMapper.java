@@ -1,9 +1,6 @@
 package com.vtbschool.mappers;
 
-import com.vtbschool.fromxsd.rubenaidar.Member;
-import com.vtbschool.fromxsd.rubenaidar.Task;
-import com.vtbschool.fromxsd.rubenaidar.Tasks;
-import com.vtbschool.fromxsd.rubenaidar.Team;
+import com.vtbschool.fromxsd.rubenaidar.*;
 import com.vtbschool.model.Group;
 import com.vtbschool.model.Intern;
 
@@ -14,22 +11,24 @@ public class RubenAidarMapper implements Mapper {
 
     @Override
     public Group mapToOur(Object obj) {
-        if (!(obj instanceof Team)) {
+        if (!(obj instanceof Root)) {
             return null; // Throw ex;
         }
-        Team team = (Team) obj;
+
+        Root root = (Root) obj;
         Group group = new Group();
-        group.setId(team.getId());
-        List<Member> members = team.getMembers().getValue().getMember();
+        group.setId(root.getTeam().getId());
+        List<Member> members = root.getTeam().getMembers().getValue().getMember();
         List<Intern> interns = new ArrayList<>();
         for (Member member : members) {
             Intern intern = new Intern();
             intern.setId(member.getId());
             populateNames(intern, member.getName());
-            populateTasks(intern, member.getTasks().getValue());
+            interns.add(intern);
 
         }
-        return null;
+        group.setInterns(interns);
+        return group;
     }
 
     private void populateNames(Intern intern, String name) {
@@ -46,10 +45,5 @@ public class RubenAidarMapper implements Mapper {
         intern.setLastName("");
     }
 
-    private void populateTasks(Intern intern, Tasks tasksWrapper) {
-        List<Task> tasks = tasksWrapper.getTask();
-        for (Task task : tasks) {
 
-        }
-    }
 }

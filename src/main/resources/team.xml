@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+    <team>
+        <id>15</id>
+        <name>Winners</name>
+        <members>
+            <member>
+                <id>10</id>
+                <name>Ivan</name>
+                <tasks>
+                    <task>
+                        <id>1</id>
+                        <name>Create new git account</name>
+                        <tags>
+                            <tag>
+                                <id>2</id>
+                                <name>Git</name>
+                            </tag>
+                            <tag>
+                                <id>2</id>
+                                <name>Git2</name>
+                            </tag>
+                        </tags>
+                    </task>
+                </tasks>
+            </member>
+            <member>
+                <id>6</id>
+                <name>Petya</name>
+                <tasks>
+                    <task>
+                        <id>1</id>
+                        <name>Create new git account</name>
+                        <tags>
+                            <tag>
+                                <id>2</id>
+                                <name>sdkjgh</name>
+                            </tag>
+                            <tag>
+                                <id>2</id>
+                                <name>sdkjgh</name>
+                            </tag>
+                        </tags>
+                    </task>
+                </tasks>
+            </member>
+        </members>
+    </team>
+</root>
