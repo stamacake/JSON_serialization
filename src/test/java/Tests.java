@@ -66,12 +66,15 @@ class Tests {
 
     @Test
     void anotherTeamXml() {
+        File file = new File(
+                getClass().getClassLoader().getResource("team.xml").getFile()
+        );
         AnySerializer<Root> serializer = new SerializationFactory<Root>(Root.class).getXMLSerializer();
-        Root root = serializer.deserialize("C:\\Users\\User\\Documents\\Projects\\JSON_serialization\\src\\main\\resources\\team.xml");
+        Root root = serializer.deserialize(file);
         AnySerializer<Group> groupSerializer = new SerializationFactory<Group>(Group.class).getXMLSerializer();
         Mapper rubenAidarMapper = new RubenAidarMapper();
         Group group = rubenAidarMapper.mapToOur(root);
-        groupSerializer.serialize("anotherour.xml", group);
+        groupSerializer.serialize("erubenAidar.xml", group);
 
     }
 
