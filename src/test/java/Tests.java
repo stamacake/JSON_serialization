@@ -1,5 +1,6 @@
 import com.vtbschool.SerializationFactory;
 import com.vtbschool.fromxsd.rubenaidar.Root;
+import com.vtbschool.mappers.IlyaRailDaniilMapper;
 import com.vtbschool.mappers.Mapper;
 import com.vtbschool.mappers.RubenAidarMapper;
 import com.vtbschool.model.Gender;
@@ -9,6 +10,7 @@ import com.vtbschool.model.Task;
 import com.vtbschool.serializers.AnySerializer;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -71,6 +73,19 @@ class Tests {
         Group group = rubenAidarMapper.mapToOur(root);
         groupSerializer.serialize("anotherour.xml", group);
 
+    }
+
+    @Test
+    void ilyaraildaniil(){
+        File file = new File(
+                getClass().getClassLoader().getResource("TeamsDIR.xml").getFile()
+        );
+        AnySerializer<com.vtbschool.fromxsd.ilyaraildaniil.Root> serializer = new SerializationFactory<>(com.vtbschool.fromxsd.ilyaraildaniil.Root.class).getXMLSerializer();
+        com.vtbschool.fromxsd.ilyaraildaniil.Root root = serializer.deserialize(file);
+        AnySerializer<Group> groupSerializer = new SerializationFactory<Group>(Group.class).getXMLSerializer();
+        Mapper ilyaRailDaniil = new IlyaRailDaniilMapper();
+        Group group = ilyaRailDaniil.mapToOur(root);
+        groupSerializer.serialize("IlyaRailDaniil.xml", group);
     }
 
 }

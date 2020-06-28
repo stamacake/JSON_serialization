@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<group>
+    <id>0</id>
+    <intern>
+        <id>1</id>
+        <firstName>Ivan</firstName>
+        <lastName>Ivanov</lastName>
+        <age>0</age>
+        <task>
+            <id>1</id>
+            <name>task 1</name>
+            <tag>
+                <id>0</id>
+                <name>Java programming</name>
+            </tag>
+            <tag>
+                <id>0</id>
+                <name>Version control</name>
+            </tag>
+        </task>
+        <task>
+            <id>2</id>
+            <name>task 2</name>
+            <tag>
+                <id>0</id>
+                <name>Java programming</name>
+            </tag>
+            <tag>
+                <id>0</id>
+                <name>Version control</name>
+            </tag>
+        </task>
+    </intern>
+    <intern>
+        <id>2</id>
+        <firstName>Igor</firstName>
+        <lastName>Igorov</lastName>
+        <age>0</age>
+        <task>
+            <id>1</id>
+            <name>task 1</name>
+            <tag>
+                <id>0</id>
+                <name>Java programming</name>
+            </tag>
+            <tag>
+                <id>0</id>
+                <name>Version control</name>
+            </tag>
+        </task>
+        <task>
+            <id>2</id>
+            <name>task 2</name>
+            <tag>
+                <id>0</id>
+                <name>Java programming</name>
+            </tag>
+            <tag>
+                <id>0</id>
+                <name>Version control</name>
+            </tag>
+        </task>
+    </intern>
+</group>
