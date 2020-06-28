@@ -1,9 +1,9 @@
-import com.vtbschool.InternSerializer;
 import com.vtbschool.SerializationFactory;
 import com.vtbschool.model.Gender;
 import com.vtbschool.model.Group;
 import com.vtbschool.model.Intern;
 import com.vtbschool.model.Task;
+import com.vtbschool.serializers.AnySerializer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -55,8 +55,7 @@ class Tests {
         g.setInterns(Arrays.asList(intern1, intern2));
 
 
-        InternSerializer serializer = new SerializationFactory().getXMLSerializer();
-
+        AnySerializer serializer = new SerializationFactory(Group.class).getXMLSerializer();
         serializer.serialize("group.xml", g);
     }
 

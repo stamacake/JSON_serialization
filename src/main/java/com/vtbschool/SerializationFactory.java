@@ -1,29 +1,32 @@
 package com.vtbschool;
 
 import com.vtbschool.exceptions.NoSuchSerializerException;
-import com.vtbschool.jsonserializer.JSONSerializer;
-import com.vtbschool.xmlserializer.XMLSerializer;
+import com.vtbschool.serializers.AnySerializer;
+import com.vtbschool.serializers.jsonserializer.JSONSerializer;
+import com.vtbschool.serializers.xmlserializer.XMLSerializer;
 
-public class SerializationFactory {
+public class SerializationFactory<T> {
 
-    public SerializationFactory() {
+    Class<T> type;
+    public SerializationFactory(Class<T> type) {
+        this.type = type;
     }
 
-    public InternSerializer getSerializer(Serializers serializer) {
+    public AnySerializer getSerializer(Serializers serializer) {
         switch (serializer) {
             case XML:
-                return new XMLSerializer();
+                return new XMLSerializer(type);
             case JSON:
-                return new JSONSerializer();
+                return new JSONSerializer(type);
         }
         throw new NoSuchSerializerException();
     }
 
-    public InternSerializer getXMLSerializer() {
-        return new XMLSerializer();
+    public AnySerializer getXMLSerializer() {
+        return new XMLSerializer(type);
     }
 
-    public InternSerializer getJSONSerializer() {
-        return new JSONSerializer();
+    public AnySerializer getJSONSerializer() {
+        return new JSONSerializer(type);
     }
 }

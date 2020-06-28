@@ -1,7 +1,8 @@
-package com.vtbschool.jsonserializer;
+package com.vtbschool.serializers.jsonserializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vtbschool.InternSerializer;
+import com.vtbschool.serializers.AbstractSerializer;
+import com.vtbschool.serializers.AnySerializer;
 import com.vtbschool.exceptions.WriteFileException;
 import com.vtbschool.model.Group;
 import org.slf4j.Logger;
@@ -12,16 +13,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class JSONSerializer implements InternSerializer {
+public class JSONSerializer<T> extends AbstractSerializer<T> implements AnySerializer<T> {
     private final static Logger logger = LoggerFactory.getLogger(JSONSerializer.class);
 
+    public JSONSerializer(Class<T> type) {
+        super(type);
+    }
+
     @Override
-    public void serialize(String filePath, Group object) {
+    public void serialize(String filePath, T object) {
         serialize(new File(filePath), object);
     }
 
     @Override
-    public void serialize(File resultFile, Group object) {
+    public void serialize(File resultFile, T object) {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -35,7 +40,7 @@ public class JSONSerializer implements InternSerializer {
     }
 
     @Override
-    public void serialize(OutputStream os, Group object) {
+    public void serialize(OutputStream os, T object) {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
@@ -48,17 +53,17 @@ public class JSONSerializer implements InternSerializer {
     }
 
     @Override
-    public Group deserialize(String filepath) {
+    public T deserialize(String filepath) {
         return deserialize(new File(filepath));
 
     }
 
     @Override
-    public Group deserialize(File file) {
+    public T deserialize(File file) {
         ObjectMapper mapper = new ObjectMapper();
-        Group gruop = null;
+        T obj = null;
         try {
-            gruop = mapper.readValue(file, Group.class);
+            obj = mapper.readValue(file, getType());
         } catch (IOException e) {
             logger.debug(e.toString());
             e.printStackTrace();
@@ -67,15 +72,15 @@ public class JSONSerializer implements InternSerializer {
 
         logger.debug("converted from JSON");
 
-        return gruop;
+        return obj;
     }
 
     @Override
-    public Group deserialize(InputStream is) {
+    public T deserialize(InputStream is) {
         ObjectMapper mapper = new ObjectMapper();
-        Group group = null;
+        T obj = null;
         try {
-            group = mapper.readValue(is, Group.class);
+            obj = mapper.readValue(is, getType());
         } catch (IOException e) {
             logger.debug(e.toString());
             e.printStackTrace();
@@ -83,7 +88,7 @@ public class JSONSerializer implements InternSerializer {
 
         logger.debug("converted from JSON");
 
-        return group;
+        return obj;
 
     }
 }

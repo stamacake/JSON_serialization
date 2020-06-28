@@ -143,6 +143,20 @@
                             </sources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <!-- Ilya, Rail, Daniil XSD schema to Java classes configuration-->
+                        <id>xjc-our</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/jaxb/our</outputDirectory>
+                            <packageName>com.vtbschool.fromxsd.our</packageName>
+                            <sources>
+                                <source>src/main/resources/our.xsd</source>
+                            </sources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
