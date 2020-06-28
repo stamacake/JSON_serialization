@@ -99,41 +99,65 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>1.5</version>
+                <version>2.5.0</version>
                 <executions>
                     <execution>
-                        <id>xjc</id>
+                        <id>xjc-bsa999</id>
                         <goals>
                             <goal>xjc</goal>
                         </goals>
+                        <configuration>
+                            <!-- bsa999 XSD schema to Java classes configuration-->
+                            <outputDirectory>target/generated-sources/jaxb/bsa999</outputDirectory>
+                            <packageName>com.vtbschool.fromxsd.bsa999</packageName>
+                            <sources>
+                                <source>src/main/resources/bsa999.xsd</source>
+                            </sources>
+                        </configuration>
                     </execution>
                     <execution>
-                        <id>schemagen</id>
+                        <!-- Ruben and Aidar XSD schema to Java classes configuration-->
+                        <id>xjc-rubenaidar</id>
                         <goals>
-                            <goal>schemagen</goal>
+                            <goal>xjc</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/jaxb/rubenaidar</outputDirectory>
+                            <packageName>com.vtbschool.fromxsd.rubenaidar</packageName>
+                            <sources>
+                                <source>src/main/resources/rubenaidar.xsd</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Ilya, Rail, Daniil XSD schema to Java classes configuration-->
+                        <id>xjc-ilyaraildaniil</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/jaxb/ilyaraildaniil</outputDirectory>
+                            <packageName>com.vtbschool.fromxsd.ilyaraildaniil</packageName>
+                            <sources>
+                                <source>src/main/resources/ilyaraildaniil.xsd</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Ilya, Rail, Daniil XSD schema to Java classes configuration-->
+                        <id>xjc-our</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/jaxb/our</outputDirectory>
+                            <packageName>com.vtbschool.fromxsd.our</packageName>
+                            <sources>
+                                <source>src/main/resources/our.xsd</source>
+                            </sources>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-<!--                    XSD schema to Java classes configuration-->
-                    <outputDirectory>target/generated-sources/jaxb</outputDirectory>
-                    <packageName>com.vtbschool.fromxsd</packageName>
-                    <schemaDirectory>src/main/resources</schemaDirectory>
-                    <schemaFiles>*.xsd</schemaFiles>
-<!--                    Java Class to XSD-schema configuration-->
-                    <transformSchemas>
-                        <transformSchema>
-                            <uri>https://www.example.org/Group</uri>
-                            <toPrefix>grps</toPrefix>
-                            <toFile>group.xsd</toFile>
-                        </transformSchema>
-                    </transformSchemas>
-                    <includes>
-                        <include>com/vtbschool/model/*</include>
-                    </includes>
-                    <verbose>true</verbose>
-                </configuration>
-
             </plugin>
 
             <plugin>
