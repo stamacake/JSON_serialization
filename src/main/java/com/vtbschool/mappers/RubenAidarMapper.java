@@ -27,7 +27,6 @@ public class RubenAidarMapper implements Mapper {
             populateNames(intern, member.getName());
             populateTasks(intern, member.getTasks().getValue());
 
-
             interns.add(intern);
 
         }
@@ -59,8 +58,9 @@ public class RubenAidarMapper implements Mapper {
 
             List<Tag> tags = task.getTags().getValue().getTag();
             populateTags(ourTask, tags);
-
+            ourTasks.add(ourTask);
         }
+        intern.setTasks(ourTasks);
     }
 
     private void populateTags(com.vtbschool.model.Task task, List<Tag> tags) {
@@ -71,7 +71,7 @@ public class RubenAidarMapper implements Mapper {
 
             taskTag.setId(tag.getId());
             taskTag.setName(tag.getName());
-            taskTags.add(taskTag)
+            taskTags.add(taskTag);
         }
         task.setTags(taskTags);
     }
